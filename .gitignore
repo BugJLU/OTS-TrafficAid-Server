@@ -24,3 +24,6 @@ hs_err_pid*
 # intellij idea stuff
 *.iml
 .idea/
+
+# db info
+*.properties
