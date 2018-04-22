@@ -3,7 +3,7 @@ package org.bugjlu.ots_server.dao;
 import org.bugjlu.ots_server.po.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
 
 @Repository
 public interface UserDao {
@@ -11,6 +11,6 @@ public interface UserDao {
     Boolean addUser(User user);
     Boolean removeUser(String id);
     User updateUser(User user);
-    User updateGeo(String geoX, String geoY);
-    Set<User> getAllUser();
+    User updateGeo(String id, String geoX, String geoY);
+    List<User> getAllUser();
 }
