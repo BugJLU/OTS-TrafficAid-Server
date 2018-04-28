@@ -15,12 +15,18 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUser(String id) {
         String sql = "SELECT * FROM user WHERE id = ?";
-        List<User> l = jdbcTemplate.query(sql,
-                new Object[] {id},
-                new BeanPropertyRowMapper<User>());
-        if (l.size() > 0) {
-            return l.get(0);
-        } else {
+        try {
+            List<User> l = jdbcTemplate.query(sql,
+                    new Object[] {id},
+                    new BeanPropertyRowMapper<User>(User.class));
+            if (l.size() > 0) {
+                return l.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return null;
         }
     }
@@ -42,9 +48,15 @@ public class UserDaoImpl implements UserDao {
                 user.getGeoX(),
                 user.getGeoY()
         };
-        if (jdbcTemplate.update(sql, args) > 0) {
-            return true;
-        } else {
+        try {
+            if (jdbcTemplate.update(sql, args) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return false;
         }
     }
@@ -52,9 +64,15 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Boolean removeUser(String id) {
         String sql = "DELETE FROM user WHERE id = ?";
-        if (jdbcTemplate.update(sql, new Object[]{id}) > 0) {
-            return true;
-        } else {
+        try {
+            if (jdbcTemplate.update(sql, new Object[]{id}) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return false;
         }
     }
@@ -80,9 +98,15 @@ public class UserDaoImpl implements UserDao {
                 user.getGeoY(),
                 user.getId()
         };
-        if (jdbcTemplate.update(sql, args) > 0) {
-            return getUser(user.getId());
-        } else {
+        try {
+            if (jdbcTemplate.update(sql, args) > 0) {
+                return getUser(user.getId());
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return null;
         }
     }
@@ -90,9 +114,15 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User updateGeo(String id, String geoX, String geoY) {
         String sql = "UPDATE user SET geoX = ?, geoY = ? WHERE id = ?";
-        if (jdbcTemplate.update(sql, new Object[]{id, geoX, geoY}) > 0) {
-            return getUser(id);
-        } else {
+        try {
+            if (jdbcTemplate.update(sql, new Object[]{geoX, geoY, id}) > 0) {
+                return getUser(id);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
             return null;
         }
     }
@@ -100,8 +130,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAllUser() {
         String sql = "SELECT * FROM user";
-        List<User> l = jdbcTemplate.query(sql,
-                new BeanPropertyRowMapper<User>());
-        return l;
+        try {
+            List<User> l = jdbcTemplate.query(sql,
+                    new BeanPropertyRowMapper<User>(User.class));
+            return l;
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
+            return null;
+        }
     }
 }
