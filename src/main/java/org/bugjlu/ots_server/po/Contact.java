@@ -1,24 +1,33 @@
 package org.bugjlu.ots_server.po;
 
 public class Contact {
-    String contactId;
-    Integer group; // 1 relative; 2 friend; 3 colleague;
+    String subjectId;
+    String objectId;
+    Integer groupType; // 1 relative; 2 friend; 3 colleague;
     Double intimacy; // between 0 and 1;
 
-    public String getContactId() {
-        return contactId;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setContactId(String contactId) {
-        this.contactId = contactId;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public Integer getGroup() {
-        return group;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public void setGroup(Integer group) {
-        this.group = group;
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
+    public Integer getGroupType() {
+        return groupType;
+    }
+
+    public void setGroupType(Integer groupType) {
+        this.groupType = groupType;
     }
 
     public Double getIntimacy() {
