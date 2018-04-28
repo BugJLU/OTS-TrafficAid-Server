@@ -19,6 +19,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!-- Beans for DAO. -->
     <bean id="userDao" class="org.bugjlu.ots_server.dao.UserDaoImpl"/>
+    <bean id="contactDao" class="org.bugjlu.ots_server.dao.ContactDaoImpl"/>
+    <bean id="resourceDao" class="org.bugjlu.ots_server.dao.ResourceDaoImpl"/>
 
 </beans>

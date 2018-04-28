@@ -9,6 +9,6 @@ import java.util.Set;
 @Repository
 public interface ResourceDao {
     Boolean addResource(Resource res);
-    Boolean removeResource(String resId);
+    Boolean removeResource(Integer resId);
     List<Resource> getResources(String id);
 }
