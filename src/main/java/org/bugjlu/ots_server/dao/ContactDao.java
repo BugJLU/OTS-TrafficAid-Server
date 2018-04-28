@@ -11,4 +11,5 @@ public interface ContactDao {
     Boolean addContact(String id, Contact contact);
     Boolean removeContact(String subjId, String objId);
     List<Contact> getContacts(String id);
+    Contact getContact(String subjId, String objId);
 }

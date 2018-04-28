@@ -109,4 +109,12 @@ public class DaoTest extends AbstractTestNGSpringContextTests {
         Assert.assertFalse(b);
     }
 
+    @Test
+    public void someFuckingLittleTests() {
+        Contact c = contactDao.getContact("9", "2");
+        System.out.println(c.getIntimacy());
+        c = contactDao.getContact("9", "99");
+        Assert.assertNull(c);
+    }
+
 }

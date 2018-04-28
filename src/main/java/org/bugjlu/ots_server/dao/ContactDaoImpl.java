@@ -65,4 +65,19 @@ public class ContactDaoImpl implements ContactDao {
             return null;
         }
     }
+
+    @Override
+    public Contact getContact(String subjId, String objId) {
+        String sql = "SELECT * FROM contact WHERE subjectId = ? AND objectId = ?";
+        try {
+            List<Contact> l = jdbcTemplate.query(sql, new Object[]{subjId, objId},
+                    new BeanPropertyRowMapper<Contact>(Contact.class));
+            if (l.size() < 1) return null;
+            return l.get(0);
+        } catch (Exception e) {
+            //TODO
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
