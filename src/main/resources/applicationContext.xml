@@ -24,4 +24,9 @@
     <bean id="contactDao" class="org.bugjlu.ots_server.dao.ContactDaoImpl"/>
     <bean id="resourceDao" class="org.bugjlu.ots_server.dao.ResourceDaoImpl"/>
 
+    <!-- Beans for Service. -->
+    <bean id="contactService" class="org.bugjlu.ots_server.service.ContactServiceImpl"/>
+    <bean id="resourceService" class="org.bugjlu.ots_server.service.ResourceServiceImpl"/>
+    <bean id="userService" class="org.bugjlu.ots_server.service.UserServiceImpl"/>
+
 </beans>

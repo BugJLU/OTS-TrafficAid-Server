@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface ResourceService {
     public List<Resource> getResourcesFrom(String id);
-    public Boolean removeResource(String rid);
+    public Boolean removeResource(Integer rid);
     public Boolean addResource(Resource res);
 }

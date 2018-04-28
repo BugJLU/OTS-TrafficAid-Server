@@ -9,8 +9,9 @@ import java.util.List;
 public interface UserService {
     public Boolean addUser(User user);
     public User updateUserInfo(User user);
-    public User changeLocation(String gx, String gy);
+    public User changeLocation(String id, String gx, String gy);
     public User getUser(String id);
-    public List<User> getUserAround(String id);
+    public List<User> getUserAround(String id, int distance);
     public List<User> getHeplerAround(String id);
+    public int getDistanceByUsers(User ua, User ub);
 }
