@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ContactService {
     public Boolean addContact(Contact contact);
-    public Boolean removeContact(String subjId, String ObjId);
-    public Contact GetContact(String subjId, String ObjId);
+    public Boolean removeContact(String subjId, String objId);
+    public Contact GetContact(String subjId, String objId);
 }

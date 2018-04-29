@@ -2,9 +2,6 @@ package org.bugjlu.ots_server.web.controller;
 
 import org.bugjlu.ots_server.po.Resource;
 import org.bugjlu.ots_server.service.ResourceService;
-import org.bugjlu.ots_server.web.vo.ResourceIdCommand;
-import org.bugjlu.ots_server.web.vo.ResourceInfoCommand;
-import org.bugjlu.ots_server.web.vo.UserIdCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,27 +20,19 @@ public class ResourceController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public Boolean addResource(@RequestBody ResourceInfoCommand rin) {
-        Resource r =new Resource();
-        get(r,rin);
-        return resourceService.addResource(r);
+    public Boolean addResource(@RequestBody Resource res) {
+        return resourceService.addResource(res);
     }
 
-    @RequestMapping(value = "remove", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "remove", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Boolean removeResource(@RequestBody ResourceIdCommand rid) {
-        return resourceService.removeResource(rid.getId());
+    public Boolean removeResource(@RequestBody Integer rid) {
+        return resourceService.removeResource(rid);
     }
 
-    @RequestMapping(value = "getfrom", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "getfrom", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<Resource> getResourcesFrom(@RequestBody UserIdCommand uid) {
-        return resourceService.getResourcesFrom(uid.getId());
-    }
-    private void get(Resource r,ResourceInfoCommand rin){
-        r.setPossessorId(rin.getPossessorId());
-        r.setName(rin.getName());
-        r.setType(rin.getType());
-        r.setId(rin.getId());
+    public List<Resource> getResourcesFrom(@RequestBody String id) {
+        return resourceService.getResourcesFrom(id);
     }
 }
