@@ -1,5 +1,5 @@
 import org.bugjlu.ots_server.po.User;
-import org.bugjlu.ots_server.web.vo.UserIdCommand;
+//import org.bugjlu.ots_server.web.vo.UserIdCommand;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -35,13 +35,13 @@ public class ClientTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void cliTest() {
-        UserIdCommand userIdCommand = new UserIdCommand();
-        userIdCommand.setId("3");
-        userIdCommand.setDistance(10000);
-        List<User> i = (List<User>) getObject("user/getuseraround", userIdCommand);
-        for (User u :
-                i) {
-            System.out.println(u.getId());
-        }
+//        UserIdCommand userIdCommand = new UserIdCommand();
+//        userIdCommand.setId("3");
+//        userIdCommand.setDistance(10000);
+//        List<User> i = (List<User>) getObject("user/getuseraround", userIdCommand);
+//        for (User u :
+//                i) {
+//            System.out.println(u.getId());
+//        }
     }
 }
