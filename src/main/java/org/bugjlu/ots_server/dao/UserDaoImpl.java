@@ -81,7 +81,7 @@ public class UserDaoImpl implements UserDao {
     public User updateUser(User user) {
         String sql = "UPDATE user SET " +
                 "id = ?, type = ?, emgContact = ?, name = ?, gender = ?, idCode = ?, " +
-                "plateNum = ?, carType = ?, contactInfo = ?, mediHist = ?, geoX = ?, geoY = ? " +
+                "plateNum = ?, carType = ?, contactInfo = ?, mediHist = ? "+//, geoX = ?, geoY = ? " +
                 "WHERE id = ?";
         Object[] args = new Object[] {
                 user.getId(),
@@ -94,8 +94,8 @@ public class UserDaoImpl implements UserDao {
                 user.getCarType(),
                 user.getContactInfo(),
                 user.getMediHist(),
-                user.getGeoX(),
-                user.getGeoY(),
+//                user.getGeoX(),
+//                user.getGeoY(),
                 user.getId()
         };
         try {
