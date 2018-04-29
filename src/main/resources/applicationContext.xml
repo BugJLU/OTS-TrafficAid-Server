@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="org.bugjlu.ots_server.dao"/>
     <context:component-scan base-package="org.bugjlu.ots_server.service"/>
@@ -24,5 +24,9 @@
     <bean id="contactDao" class="org.bugjlu.ots_server.dao.ContactDaoImpl"/>
     <bean id="resourceDao" class="org.bugjlu.ots_server.dao.ResourceDaoImpl"/>
 
+    <!-- Beans for Service. -->
+    <bean id="contactService" class="org.bugjlu.ots_server.service.ContactServiceImpl"/>
+    <bean id="resourceService" class="org.bugjlu.ots_server.service.ResourceServiceImpl"/>
+    <bean id="userService" class="org.bugjlu.ots_server.service.UserServiceImpl"/>
 
 </beans>

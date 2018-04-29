@@ -1,6 +1,7 @@
 package org.bugjlu.ots_server.assistService;
 
 import net.sf.json.JSONObject;
+import org.bugjlu.ots_server.po.User;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -65,6 +66,24 @@ public class MapService {
             return dist;
         } catch (Exception e) {
             return -1;
+        }
+    }
+
+    public static double distanceToCoefficient(int dist) {
+        if (dist > 0 && dist <= 1000) {
+            return 1;
+        } else if (dist > 1000 && dist <= 2000) {
+            return 0.97;
+        } else if (dist > 2000 && dist <= 3000) {
+            return 0.94;
+        } else if (dist > 3000 && dist <= 4000) {
+            return 0.90;
+        } else if (dist > 4000 && dist <= 5000) {
+            return 0.85;
+        } else if (dist > 5000 && dist <= 10000) {
+            return 0.65;
+        } else {
+            return 0;
         }
     }
 
