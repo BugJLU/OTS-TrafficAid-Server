@@ -35,7 +35,7 @@ public class ResourceController {
         return resourceService.removeResource(rid.getId());
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "getfrom", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public List<Resource> getResourcesFrom(@RequestBody UserIdCommand uid) {
         return resourceService.getResourcesFrom(uid.getId());
