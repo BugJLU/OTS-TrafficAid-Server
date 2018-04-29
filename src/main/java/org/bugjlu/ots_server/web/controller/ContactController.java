@@ -25,13 +25,13 @@ public class ContactController {
 
     @RequestMapping(value = "remove", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Boolean removeContact(@RequestBody String subjId, String objId) {
+    public Boolean removeContact(String subjId, String objId) {
         return contactService.removeContact(subjId,objId);
     }
 
     @RequestMapping(value = "getinfo", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Contact GetContact(@RequestBody String subjId, String objId) {
+    public Contact GetContact(String subjId, String objId) {
         return contactService.GetContact(subjId,objId);
     }
 }

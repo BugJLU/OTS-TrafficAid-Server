@@ -39,25 +39,25 @@ public class UserController {
 
     @RequestMapping(value = "updategeo", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public User updateGeo(@RequestBody String id,String gx,String gy) {
+    public User updateGeo(String id,String gx,String gy) {
         return userService.changeLocation(id,gx,gy);
     }
 
     @RequestMapping(value = "getinfo", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public User getUserInfo(@RequestBody String id) {
+    public User getUserInfo(String id) {
         return userService.getUser(id);
     }
 
     @RequestMapping(value = "getuseraround", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<User> getUserAround(@RequestBody String id,int distance) {
+    public List<User> getUserAround(String id,int distance) {
         return userService.getUserAround(id,distance);
     }
 
     @RequestMapping(value = "gethelperaround", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<User> getHeplerAround(@RequestBody String id) {
+    public List<User> getHeplerAround(String id) {
         return userService.getHeplerAround(id);
     }
 
