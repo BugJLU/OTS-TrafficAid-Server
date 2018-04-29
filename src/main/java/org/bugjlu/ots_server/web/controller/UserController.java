@@ -1,7 +1,7 @@
 package org.bugjlu.ots_server.web.controller;
 
 import org.bugjlu.ots_server.po.User;
-import org.bugjlu.ots_server.service.*;
+import org.bugjlu.ots_server.service.UserService;
 import org.bugjlu.ots_server.web.vo.UserGeoCommand;
 import org.bugjlu.ots_server.web.vo.UserIdCommand;
 import org.bugjlu.ots_server.web.vo.UserInfoCommand;
@@ -22,46 +22,51 @@ public class UserController {
     UserService userService;
 
 
-//    @Override
     @RequestMapping(value = "add", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public Boolean addUser(@RequestBody  UserInfoCommand uin) {
         User u = new User();
         get(u,uin);
-        Boolean flag = userService.addUser(u);
-        System.out.println(flag);
-        return flag;
+        return userService.addUser(u);
     }
 
-//    @Override
-//    public Boolean removeUser(UserIdCommand uid) {
-//        return null;
+//    @RequestMapping(value = "remove", method = RequestMethod.POST, produces = "application/json")
+//    @ResponseBody
+//    public Boolean removeUser(@RequestBody UserIdCommand uid) {
+//        return false;
 //    }
-//
-//    @Override
-//    public User updateUserInfo(UserInfoCommand uin) {
-//        return null;
-//    }
-//
-//    @Override
-//    public User updateGeo(UserGeoCommand uge) {
-//        return null;
-//    }
-//
-//    @Override
-//    public User getUserInfo(UserIdCommand uid) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<User> getUserAround(UserIdCommand uid) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<User> getHeplerAround(UserIdCommand uid) {
-//        return null;
-//    }
+
+    @RequestMapping(value = "updateinfo", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public User updateUserInfo(@RequestBody UserInfoCommand uin) {
+        User u = new User();
+        get(u,uin);
+        return userService.updateUserInfo(u);
+    }
+
+    @RequestMapping(value = "updategeo", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public User updateGeo(@RequestBody UserGeoCommand uge) {
+        return userService.changeLocation(uge.getId(),uge.getGeoX(),uge.getGeoY());
+    }
+
+    @RequestMapping(value = "getinfo", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public User getUserInfo(@RequestBody UserIdCommand uid) {
+        return userService.getUser(uid.getId());
+    }
+
+    @RequestMapping(value = "getuseraround", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public List<User> getUserAround(@RequestBody UserIdCommand uid) {
+        return userService.getUserAround(uid.getId(),uid.getDistance());
+    }
+
+    @RequestMapping(value = "gethelperaround", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public List<User> getHeplerAround(@RequestBody UserIdCommand uid) {
+        return userService.getHeplerAround(uid.getId());
+    }
 
     private void get(User u,UserInfoCommand uin){
         u.setId(uin.getId());
