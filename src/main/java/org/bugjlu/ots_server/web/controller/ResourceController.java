@@ -26,13 +26,13 @@ public class ResourceController {
 
     @RequestMapping(value = "remove", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Boolean removeResource(@RequestBody Integer rid) {
+    public Boolean removeResource(Integer rid) {
         return resourceService.removeResource(rid);
     }
 
     @RequestMapping(value = "getfrom", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<Resource> getResourcesFrom(@RequestBody String id) {
+    public List<Resource> getResourcesFrom(String id) {
         return resourceService.getResourcesFrom(id);
     }
 }
