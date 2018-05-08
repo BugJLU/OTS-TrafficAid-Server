@@ -88,7 +88,9 @@ public class UserServiceImpl implements UserService {
             for (Contact cj2 :
                     jump2contacts) {
                 User j2User = userDao.getUser(cj2.getObjectId());
-                if (j2User.getId().equals(currentUser.getGeoX())) continue;
+                if (j2User.getId().equals(currentUser.getId()) ||
+                        j2User.getId().equals(currentUser.getEmgContact()))
+                    continue;
                 double i2 = IntimacyService.calculate2JumpIntimacy(
                         cj1.getGroupType(),
                         cj2.getGroupType()
