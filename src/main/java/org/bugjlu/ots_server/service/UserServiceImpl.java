@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
             // add 1jump contact himself
             User j1User = userDao.getUser(cj1.getObjectId());
-            if (j1User.getId().equals(currentUser.getGeoX())) continue;
+            if (j1User.getId().equals(currentUser.getId())) continue;
             double i1 = IntimacyService.get1JumpIntimacy(cj1.getGroupType());
             i1 *= MapService.distanceToCoefficient(getDistanceByUsers(currentUser, j1User));
             helperCandidates.add(new Candidate(cj1.getObjectId(), i1));
